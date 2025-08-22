@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Filter } from "lucide-react";
+import { Filter, Link } from "lucide-react";
 import { FloatingShapes } from "@/components/floating-shapes";
 import { ScrollParallax } from "@/components/scroll-parallax";
 import { Hero3DVideo } from "@/components/3d-hero-video";
@@ -140,9 +140,11 @@ export default function CreativePortfolio() {
             CREATIVE VISUALS IN MOTION
           </p>
           <div className="flex gap-4 justify-center">
-            <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-600/25">
-              View Portfolio
-            </Button>
+            <Link href="/portfolio">
+              <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg shadow-blue-600/25">
+                View Portfolio
+              </Button>
+            </Link>
             <Button
               variant="outline"
               className="border-slate-400 text-slate-300 hover:bg-slate-700 hover:text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 bg-transparent shadow-lg shadow-slate-500/25"

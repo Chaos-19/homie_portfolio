@@ -116,7 +116,7 @@ export function LoginForm() {
             <p className="text-sm text-muted-foreground mb-2">
               Demo Credentials:
             </p>
-            <p className="text-sm font-mono">Email: admin@raffle.com</p>
+            <p className="text-sm font-mono">Email: admin@beki.com</p>
             <p className="text-sm font-mono">Password: admin123</p>
           </div>
         </CardContent>

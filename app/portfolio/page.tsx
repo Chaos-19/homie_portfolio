@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { getFeaturedPortfolioItems } from "@/lib/portfolio";
+import { getFeaturedPortfolioItems, getPortfolioItems } from "@/lib/portfolio";
 
 interface PortfolioItem {
   id: string;
@@ -42,7 +42,7 @@ export default function PortfolioPage() {
 
   useEffect(() => {
     async function fetchExpr() {
-      const portfolioData = await getFeaturedPortfolioItems();
+      const portfolioData = await getPortfolioItems();
       setPortfolioItems(
         portfolioData.map((data) => ({
           id: data.id,
@@ -55,16 +55,6 @@ export default function PortfolioPage() {
           tags: data.tags,
           date: data.created_at,
           views: 245,
-
-          // category: "Graphic Design",
-          // description:
-          //   "Complete brand identity package for a tech startup including logo design, color palette, typography guidelines, and brand applications across various touchpoints.",
-          // image: "/neon-brand-identity.png",
-          // type: "image",
-          // status: "published",
-          // tags: ["branding", "logo", "identity", "startup"],
-          // views: 245,
-          // date: "2024-01-15",
         }))
       );
     }
@@ -98,7 +88,7 @@ export default function PortfolioPage() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden bg-gray-900 text-white">
+    <div className="h-screen overflow-hidden bg-gray-900 text-white">
       {/* Header */}
       <header className="bg-gray-800 border-b border-gray-700 px-6 py-6">
         <div className="max-w-7xl mx-auto">
@@ -173,7 +163,7 @@ export default function PortfolioPage() {
       </header>
 
       {/* Portfolio Content */}
-      <main className="max-w-7xl mx-auto px-6 py-8 overflow-y-scroll">
+      <main className="max-w-7xl mx-auto px-6 py-8 overflow-y-scroll h-full pb-52">
         <div className="mb-6 flex items-center justify-between">
           <p className="text-gray-400">
             Showing {filteredItems.length} of{" "}
@@ -194,12 +184,26 @@ export default function PortfolioPage() {
                 onClick={() => setSelectedItem(item)}
               >
                 <div className="relative aspect-video overflow-hidden">
-                  <Image
-                    src={item.image || "/placeholder.svg"}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
+                  {!item.image.endsWith(".mp4") ? (
+                    <Image
+                      src={item.image || "/placeholder.svg"}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  ) : (
+                    <video
+                      className="object-cover group-hover:scale-105 transition-transform duration-300 w-full"
+                      autoPlay
+                      loop
+                      playsInline
+                    >
+                      <source
+                        src={item.image || "/placeholder.svg"}
+                        type="video/mp4"
+                      />
+                    </video>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="absolute top-4 right-4">
                     <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30">
@@ -260,12 +264,26 @@ export default function PortfolioPage() {
                 <CardContent className="p-6">
                   <div className="flex gap-6">
                     <div className="relative w-48 h-32 flex-shrink-0 overflow-hidden rounded-lg">
-                      <Image
-                        src={item.image || "/placeholder.svg"}
-                        alt={item.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
+                      {!item.image.endsWith(".mp4") ? (
+                        <Image
+                          src={item.image || "/placeholder.svg"}
+                          alt={item.title}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <video
+                          className="object-cover group-hover:scale-105 transition-transform duration-300 w-full"
+                          autoPlay
+                          loop
+                          playsInline
+                        >
+                          <source
+                            src={item.image || "/placeholder.svg"}
+                            type="video/mp4"
+                          />
+                        </video>
+                      )}
                       <Badge className="absolute top-2 right-2 bg-blue-500/20 text-blue-400 border-blue-500/30 text-xs">
                         {item.type === "video" ? "Video" : "Image"}
                       </Badge>
