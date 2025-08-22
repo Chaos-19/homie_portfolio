@@ -16,10 +16,10 @@ const orbitron = Orbitron({
 });
 
 export const metadata: Metadata = {
-  title: "Alex Creative - Graphic & Video Editor",
+  title: "Beki- Graphic & Video Editor",
   description:
     "Professional graphic design and video editing services. Creative portfolio showcasing modern design and cinematic video work.",
-  generator: "v0.app",
+  generator: "Chaos-19 Kalkidan getachew",
 };
 
 export default function RootLayout({
@@ -38,9 +38,7 @@ html {
 }
         `}</style>
       </head>
-      <body
-        className={`${inter.variable} ${orbitron.variable} antialiased`}
-      >
+      <body className={`${inter.variable} ${orbitron.variable} antialiased`}>
         {children}
       </body>
     </html>

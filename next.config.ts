@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "i.pcmag.com",
         pathname: "/imagery/**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/dy1wwd9av/**",
+      },
     ],
   },
 };
