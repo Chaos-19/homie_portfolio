@@ -128,11 +128,22 @@ export function Portfolio3DModal({
 
       <div className="relative z-10 max-w-4xl mx-4 bg-gray-900/90 rounded-2xl border border-cyan-500/30 backdrop-blur-md overflow-hidden">
         <div className="relative">
-          <img
-            src={item.image || "/placeholder.svg"}
-            alt={item.title}
-            className="w-full h-96 object-cover"
-          />
+          {!item.image.includes(".mp4") ? (
+            <img
+              src={item.image || "/placeholder.svg"}
+              alt={item.title}
+              className="w-full  object-cover"
+            />
+          ) : (
+            <video
+              className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-110"
+              autoPlay
+              loop
+              playsInline
+            >
+              <source src={item.image || "/placeholder.svg"} type="video/mp4" />
+            </video>
+          )}
 
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
 

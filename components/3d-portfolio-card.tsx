@@ -71,20 +71,38 @@ export function Portfolio3DCard({ item, onOpenModal }: Portfolio3DCardProps) {
     >
       <Card className="bg-gray-900/50 border-gray-800 overflow-hidden hover:border-cyan-500/50 transition-all duration-300 relative">
         <div className="relative overflow-hidden">
-          <Image
-            src={item.image || "/placeholder.svg"}
-            alt={item.title}
-            className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-            width={400}
-            height={256}
-            style={{
-              transform: isHovered
-                ? `scale(1.1) translate(${mousePosition.x * 10}px, ${
-                    mousePosition.y * 10
-                  }px)`
-                : "scale(1)",
-            }}
-          />
+          {!item.image.includes(".mp4") ? (
+            <Image
+              src={item.image || "/placeholder.svg"}
+              alt={item.title}
+              className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              width={400}
+              height={256}
+              style={{
+                transform: isHovered
+                  ? `scale(1.1) translate(${mousePosition.x * 10}px, ${
+                      mousePosition.y * 10
+                    }px)`
+                  : "scale(1)",
+              }}
+            />
+          ) : (
+            <video
+              className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              style={{
+                transform: isHovered
+                  ? `scale(1.1) translate(${mousePosition.x * 10}px, ${
+                      mousePosition.y * 10
+                    }px)`
+                  : "scale(1)",
+              }}
+              autoPlay
+              loop
+              playsInline
+            >
+              <source src={item.image || "/placeholder.svg"} type="video/mp4" />
+            </video>
+          )}
 
           {/* 3D Overlay Effects */}
           <div
