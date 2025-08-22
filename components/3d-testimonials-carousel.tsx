@@ -20,10 +20,10 @@ export function Testimonials3DCarousel({ testimonials }: Testimonials3DCarouselP
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const sceneRef = useRef<HTMLDivElement>(null)
-  const threeSceneRef = useRef<THREE.Scene>()
-  const rendererRef = useRef<THREE.WebGLRenderer>()
-  const cameraRef = useRef<THREE.PerspectiveCamera>()
-  const frameRef = useRef<number>()
+  const threeSceneRef = useRef<THREE.Scene>(null)
+  const rendererRef = useRef<THREE.WebGLRenderer>(null)
+  const cameraRef = useRef<THREE.PerspectiveCamera>(null)
+  const frameRef = useRef<number| null>(null)
   const particlesRef = useRef<THREE.Points[]>([])
 
   useEffect(() => {
@@ -189,7 +189,7 @@ export function Testimonials3DCarousel({ testimonials }: Testimonials3DCarouselP
                       {/* Testimonial Text */}
                       <div className="relative z-10">
                         <p className="text-xl text-gray-300 mb-8 italic leading-relaxed font-light">
-                          "{testimonial.text}"
+                          &quot;{testimonial.text}&quot;
                         </p>
 
                         {/* Author Info */}

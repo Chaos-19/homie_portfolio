@@ -26,11 +26,11 @@ const iconMap = {
 
 export function Service3DTile({ service, index, scrollPosition }: Service3DTileProps) {
   const tileRef = useRef<HTMLDivElement>(null)
-  const sceneRef = useRef<THREE.Scene>()
-  const rendererRef = useRef<THREE.WebGLRenderer>()
-  const cameraRef = useRef<THREE.PerspectiveCamera>()
-  const frameRef = useRef<number>()
-  const cubeRef = useRef<THREE.Mesh>()
+  const sceneRef = useRef<THREE.Scene>(null)
+  const rendererRef = useRef<THREE.WebGLRenderer>(null)
+  const cameraRef = useRef<THREE.PerspectiveCamera>(null)
+  const frameRef = useRef<number>(null)
+  const cubeRef = useRef<THREE.Mesh>(null)
   const [isHovered, setIsHovered] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
