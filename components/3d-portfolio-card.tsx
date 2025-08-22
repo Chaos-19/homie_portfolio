@@ -25,6 +25,8 @@ export function Portfolio3DCard({ item, onOpenModal }: Portfolio3DCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current) return;
 
@@ -88,6 +90,12 @@ export function Portfolio3DCard({ item, onOpenModal }: Portfolio3DCardProps) {
             />
           ) : (
             <video
+              onMouseEnter={() => videoRef?.current?.play()}
+              onMouseLeave={() => {
+                videoRef?.current?.pause();
+                if (videoRef?.current?.currentTime)
+                  videoRef.current.currentTime = 0;
+              }}
               className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
               style={{
                 transform: isHovered

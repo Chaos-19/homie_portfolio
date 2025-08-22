@@ -38,7 +38,9 @@ html {
 }
         `}</style>
       </head>
-      <body className={`${inter.variable} ${orbitron.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${orbitron.variable} antialiased overflow-x-hidden`}
+      >
         {children}
       </body>
     </html>
