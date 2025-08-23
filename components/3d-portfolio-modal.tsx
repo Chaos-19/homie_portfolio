@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { X, Play, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 interface Portfolio3DModalProps {
   item: {
@@ -129,10 +130,13 @@ export function Portfolio3DModal({
       <div className="relative z-10 max-w-4xl mx-4 bg-gray-900/90 rounded-2xl border border-cyan-500/30 backdrop-blur-md overflow-hidden">
         <div className="relative">
           {!item.image.includes(".mp4") ? (
-            <img
+            <Image
               src={item.image || "/placeholder.svg"}
               alt={item.title}
-              className="w-full  object-cover"
+              className="w-full  object-cover h-96 transition-transform duration-500 group-hover:scale-110"
+              width={400}
+              height={256}
+              style={{}}
             />
           ) : (
             <video
